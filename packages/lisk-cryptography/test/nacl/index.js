@@ -3,7 +3,6 @@ import * as slow from '../../src/nacl/slow';
 // Require is used for stubbing
 // eslint-disable-next-line
 const _module = require('module');
-let loadedLibrary;
 
 const resetTest = () => {
 	// Reset environment variable
@@ -22,6 +21,7 @@ const removeConstants = lib => {
 };
 
 describe('nacl index.js', () => {
+	let loadedLibrary;
 	// Store current env variable and set it back after tests are run
 	let initialEnvVar;
 	before(() => {
@@ -64,6 +64,7 @@ describe('nacl index.js', () => {
 			loadedLibrary = removeConstants(loadedLibrary);
 			return expect(loadedLibrary).to.be.eql(fast);
 		});
+
 		it('should load nacl slow if process.env.NACL_FAST is set to disable', () => {
 			process.env.NACL_FAST = 'disable';
 			// eslint-disable-next-line
@@ -71,6 +72,7 @@ describe('nacl index.js', () => {
 			loadedLibrary = removeConstants(loadedLibrary);
 			return expect(loadedLibrary).to.be.eql(slow);
 		});
+
 		it('should load nacl fast if process.env.NACL_FAST is undefined', () => {
 			process.env.NACL_FAST = undefined;
 			// eslint-disable-next-line
@@ -100,6 +102,7 @@ describe('nacl index.js', () => {
 			loadedLibrary = removeConstants(loadedLibrary);
 			return expect(loadedLibrary).to.eql(slow);
 		});
+
 		it('should load nacl slow if process.env.NACL_FAST is set to disable', () => {
 			process.env.NACL_FAST = 'disable';
 			// eslint-disable-next-line
@@ -107,6 +110,7 @@ describe('nacl index.js', () => {
 			loadedLibrary = removeConstants(loadedLibrary);
 			return expect(loadedLibrary).to.eql(slow);
 		});
+
 		it('should load nacl slow if process.env.NACL_FAST is undefined', () => {
 			process.env.NACL_FAST = undefined;
 			// eslint-disable-next-line
