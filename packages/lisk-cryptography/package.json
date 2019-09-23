@@ -62,7 +62,7 @@
 		"buffer-reverse": "1.0.1",
 		"ed2curve": "0.2.1",
 		"lisk-constants": "1.0.0",
-		"tweetnacl": "1.0.0",
+		"tweetnacl": "1.0.1",
 		"varuint-bitcoin": "1.1.0"
 	},
 	"devDependencies": {
